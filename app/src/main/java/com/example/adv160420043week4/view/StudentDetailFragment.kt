@@ -60,11 +60,5 @@ class StudentDetailFragment : Fragment() {
 //            Log.d("TEST", student.name.toString())
         })
 
-//        val recView = view.findViewById<RecyclerView>(R.id.recView)
-//        recView?.layoutManager = LinearLayoutManager(context)
-//        recView?.adapter = studentListAdapter
-
-//        observeViewModel()
-
     }
 }
