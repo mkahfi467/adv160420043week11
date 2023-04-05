@@ -53,10 +53,10 @@ class ListViewModel(application: Application): AndroidViewModel(application){
                 val result = Gson().fromJson<ArrayList<Student>>(it, sType)
                 studentsLD.value = result
                 loadingLD.value = false
-                Log.d("showvoley", it)
+//                Log.d("showvoley", it)
             },
             {
-                Log.d("showvoley", it.toString())
+//                Log.d("showvoley", it.toString())
                 studentLoadErrorLD.value = true
                 loadingLD.value = false
             })

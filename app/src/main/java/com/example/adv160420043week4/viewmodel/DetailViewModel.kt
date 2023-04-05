@@ -23,26 +23,18 @@ class DetailViewModel(application: Application):AndroidViewModel(application) {
 //            "http://dummyimage.com/75x100.jpg/cc0000/ffffff")
 //        studentLD.value = student1
 
+        // WEEK 6 Class Exercise
         queue = Volley.newRequestQueue(getApplication())
         val url = "http://adv.jitusolution.com/student.php?id=" + studentId
 //        Log.d("TEST", url)
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-//                val sType = object : TypeToken<ArrayList<Student>>() { }.type
-//                val result = Gson().fromJson<ArrayList<Student>>(it, sType)
-//                studentLD.value = result
-//                loadingLD.value = false
-//                Log.d("showvoley", it)
-
-                val sType = object : TypeToken<ArrayList<Student>>() { }.type
                 val result = Gson().fromJson<Student>(it, Student::class.java)
                 studentLD.value = result
             },
             {
-//                Log.d("showvoley", it.toString())
-//                studentLoadErrorLD.value = true
-//                loadingLD.value = false
+
             })
 
         stringRequest.tag = "TAG"
