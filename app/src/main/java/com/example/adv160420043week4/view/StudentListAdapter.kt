@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adv160420043week4.R
 import com.example.adv160420043week4.model.Student
+import com.example.adv160420043week4.util.loadImage
 
 class StudentListAdapter(val studentList:ArrayList<Student>)
     :RecyclerView.Adapter<StudentListAdapter.StudentViewHolder>() {
@@ -33,9 +36,17 @@ class StudentListAdapter(val studentList:ArrayList<Student>)
 
         val btnDetail = holder.view.findViewById<Button>(R.id.btnDetail)
         btnDetail.setOnClickListener {
-            val action = StudentListFragmentDirections.actionStudentDetail()
+            // WEEK 6 Buat variable student id dan dikirim ke studentDetailFragment
+            val student_id = studentList[position].id.toString()
+
+            val action = StudentListFragmentDirections.actionStudentDetail(student_id)
             Navigation.findNavController(it).navigate(action)
         }
+
+        // WEEK 6
+        var imageView = holder.view.findViewById<ImageView>(R.id.imageView)
+        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBar)
+        imageView.loadImage(studentList[position].photoUrl, progressBar)
     }
 
     fun updateStudentList(newStudentList: ArrayList<Student>) {
